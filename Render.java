@@ -4,14 +4,16 @@ import java.util.Random;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.EventQueue;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.io.PrintStream;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-class Drawer extends JPanel {
+/**
+ * Render class.
+ */
+class Render extends JPanel {
 
     /**
      * The serialization version number for the class.
@@ -69,13 +71,13 @@ class Drawer extends JPanel {
     private boolean disableMiddlePriority = false;
 
     /**
-     * Drawer class constructor.
+     * Render class constructor.
      *
      * @param file
      * @param flag
      * @return self
      */
-    public Drawer(String file, boolean flag) {
+    public Render(String file, boolean flag) {
         // Parse the dimensions.
         parseDimensions(file);
 
@@ -93,26 +95,6 @@ class Drawer extends JPanel {
 
         // Print some statistics.
         printStatistics();
-    }
-
-    /**
-     * Main method.
-     *
-     * @param args
-     * @return void
-     */
-    public static void main(String[] args) {
-        // Make sure a filename was provided.
-        if (args.length == 0) {
-            console.println("Please specify a source file.");
-            return;
-        }
-
-        // Check for command-line flags.
-        boolean flag = args.length > 1 && args[1].equals("--disable-middle-priority");
-
-        // Add the Drawer to the event queue.
-        EventQueue.invokeLater(() -> new Drawer(args[0], flag));
     }
 
     /**
