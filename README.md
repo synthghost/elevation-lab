@@ -4,11 +4,11 @@
 
 ## Build:
 
-`javac Drawer.java`
+`javac App.java`
 
 ## Execute:
 
-`java Drawer <file> [--disable-middle-priority]`
+`java App <file> [--disable-middle-priority]`
 
 where `<file>` can be one of:
 
