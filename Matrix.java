@@ -1,17 +1,11 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.IOException;
-import java.io.PrintStream;
 
 /**
  * Matrix class.
  */
 public class Matrix {
-
-    /**
-     * The console output stream.
-     */
-    private static PrintStream console = System.out;
 
     /**
      * Fill a matrix of integers from the contents of a file.
@@ -32,9 +26,9 @@ public class Matrix {
 
             file.close();
         } catch (IOException e) {
-            console.printf("There was a problem opening or reading the file: %s.%n", fileName);
+            Console.out(String.format("There was a problem opening or reading the file: %s", fileName));
         } catch (Exception e) {
-            console.println("Unable to parse values from file. Please make sure the data is intact.");
+            Console.out("Unable to parse values from file. Please make sure the data is intact.");
         }
 
         return matrix;

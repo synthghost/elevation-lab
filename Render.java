@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Graphics2D;
 import java.io.IOException;
-import java.io.PrintStream;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
@@ -29,11 +28,6 @@ class Render extends JPanel {
      * The 2D graphics canvas object.
      */
     private Graphics2D canvas;
-
-    /**
-     * The console output stream.
-     */
-    private static PrintStream console = System.out;
 
     /**
      * The random number generator.
@@ -137,7 +131,7 @@ class Render extends JPanel {
             cols = Integer.parseInt(file.substring(underscore + 1, delimiter));
             rows = Integer.parseInt(file.substring(delimiter + 1, extension));
         } catch (Exception e) {
-            console.println("Unable to parse values from file. Please make sure the data is intact.");
+            Console.out("Unable to parse values from file. Please make sure the data is intact.");
             System.exit(-1);
         }
     }
@@ -176,8 +170,8 @@ class Render extends JPanel {
      * @return void
      */
     private void printStatistics() {
-        console.printf("%nHIGHEST point of elevation on the map: %d%n", maxOfMatrix);
-        console.printf("LOWEST point of elevation on the map: %d%n%n", minOfMatrix);
+        Console.out(String.format("%nHIGHEST point of elevation on the map: %d", maxOfMatrix));
+        Console.out(String.format("LOWEST point of elevation on the map: %d%n", minOfMatrix));
     }
 
     /**
@@ -220,8 +214,8 @@ class Render extends JPanel {
         drawLowestElevPath(maxIndex, Colors.worstPath);
 
         // Print path statistics.
-        console.printf("Total elevation change on the path of LEAST resistance: %d%n", minElevation);
-        console.printf("Total elevation change on the path of MOST resistance: %d%n%n", maxElevation);
+        Console.out(String.format("Total elevation change on the path of LEAST resistance: %d", minElevation));
+        Console.out(String.format("Total elevation change on the path of MOST resistance: %d%n", maxElevation));
     }
 
     /**

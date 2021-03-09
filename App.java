@@ -1,15 +1,9 @@
 import java.awt.EventQueue;
-import java.io.PrintStream;
 
 /**
  * App class.
  */
 public class App {
-
-    /**
-     * The console output stream.
-     */
-    private static PrintStream console = System.out;
 
     /**
      * Main method.
@@ -21,7 +15,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         // Make sure a filename was provided.
         if (args.length == 0) {
-            console.println("Please specify a source file.");
+            Console.out("Please specify a source file.");
             return;
         }
 
