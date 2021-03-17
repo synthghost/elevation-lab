@@ -4,7 +4,9 @@
 
 ## Build:
 
-`javac App.java`
+`make`
+
+which runs the makefile, which runs `javac App.java`.
 
 ## Execute:
 
