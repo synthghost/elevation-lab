@@ -203,14 +203,14 @@ class Render extends JPanel {
         int minElevation = Matrix.findMinOfArray(paths);
         int minIndex = Matrix.findMinIndexOfArray(paths);
 
-        // Draw the path of least resistance.
+        // Draw the path of least total resistance.
         drawLowestElevPath(minIndex, Colors.bestPath);
 
-        // Find the path that had the least total elevation change.
+        // Find the path that had the greatest total elevation change.
         int maxElevation = Matrix.findMaxOfArray(paths);
         int maxIndex = Matrix.findMaxIndexOfArray(paths);
 
-        // Draw the path of most resistance.
+        // Draw the path of greatest total resistance.
         drawLowestElevPath(maxIndex, Colors.worstPath);
 
         // Print path statistics.
@@ -343,8 +343,8 @@ class Render extends JPanel {
         // Advance the search to the next column.
         col++;
 
-        // Calculate the elevations of possible next steps, being careful to avoid
-        // overflowing the matrix at the top and bottom edges.
+        // Calculate the elevations of possible next steps, being careful
+        // to avoid overflowing the matrix at the top and bottom edges.
         int fwdChange = Math.abs(current - matrix[row][col]);
         int upChange = row > 0 ? Math.abs(current - matrix[row - 1][col]) : fwdChange;
         int downChange = row < rows - 1 ? Math.abs(current - matrix[row + 1][col]) : fwdChange;
@@ -357,10 +357,10 @@ class Render extends JPanel {
         int fwd = 0;
         int down = 1;
 
-        // The disableMiddlePriority switch disables the "middle-priority" rule from the
-        // assignment specification in order to achieve the more divergent results
-        // observed in the example screenshots. Pass "--disable-middle-priority" as the
-        // second command-line argument to activate the chaos!
+        // The disableMiddlePriority switch disables the "middle-priority" rule
+        // (described in the project specifications) in order to achieve more
+        // divergent pathing. Pass "--disable-middle-priority" as the second
+        // command-line argument to flip the switch and activate the chaos!
 
         if (disableMiddlePriority && min == fwdChange && min == upChange) {
             // Randomly select between forward and up.
