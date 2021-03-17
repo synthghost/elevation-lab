@@ -41,7 +41,7 @@ public class Matrix {
      * @return int
      */
     public static int findMax(int[][] matrix) {
-        return findExtremeOfMatrix(matrix, ExtremeMode.MAX);
+        return findExtreme(matrix, ExtremeMode.MAX);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Matrix {
      * @return int
      */
     public static int findMin(int[][] matrix) {
-        return findExtremeOfMatrix(matrix, ExtremeMode.MIN);
+        return findExtreme(matrix, ExtremeMode.MIN);
     }
 
     /**
@@ -121,7 +121,7 @@ public class Matrix {
      * @param mode
      * @return int
      */
-    private static int findExtremeOfMatrix(int[][] matrix, ExtremeMode mode) {
+    private static int findExtreme(int[][] matrix, ExtremeMode mode) {
         int extreme = matrix[0][0];
 
         for (int i = 0; i < matrix.length; i++) {
